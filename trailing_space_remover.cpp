@@ -44,7 +44,10 @@ int main(int argc, char** argv) {
     cout << "Writing..." << endl;
     ofstream fout(filename, ios::out);
     for (int i = 0, n = vLines.size(); i < n; ++i) {
-        fout << vLines[i] << endl;
+        if (i != 0) {
+            fout << endl;
+        }
+        fout << vLines[i];
     }
     fout.close();
 
