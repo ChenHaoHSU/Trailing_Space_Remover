@@ -7,8 +7,6 @@
 
 using namespace std;
 
-string filename = "";
-
 int main(int argc, char** argv) {
     string filename = argv[1];
 
@@ -16,7 +14,7 @@ int main(int argc, char** argv) {
     vector<string> vLines;
     ifstream fin(filename, ios::in);
     string buffer;
-    int line_no = 0;
+    size_t line_no = 0;
     cout << "Reading..." << endl;
     while (getline(fin, buffer)) {
         vLines.emplace_back(buffer);
@@ -27,7 +25,7 @@ int main(int argc, char** argv) {
     // Remove trailing spaces
     cout << "Removing..." << endl;
     size_t nSpaces = 0;
-    for (int i = 0, n = vLines.size(); i < n; ++i) {
+    for (size_t i = 0, n = vLines.size(); i < n; ++i) {
         string& str = vLines[i];
         size_t found = str.find_last_not_of(" ");
         if (found != string::npos) {
@@ -43,7 +41,7 @@ int main(int argc, char** argv) {
     // Write
     cout << "Writing..." << endl;
     ofstream fout(filename, ios::out);
-    for (int i = 0, n = vLines.size(); i < n; ++i) {
+    for (size_t i = 0, n = vLines.size(); i < n; ++i) {
         if (i != 0) {
             fout << endl;
         }
